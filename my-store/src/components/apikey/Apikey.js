@@ -9,16 +9,13 @@ data.append('client_id', clientId);
 data.append('client_secret', clientSecret);
 data.append('grant_type', 'client_credentials');
 
-axios.post(url, data, {
+const response = await axios.post(url, data, {
     headers: {
         'Content-Type': 'application/x-www-form-urlencoded'
     }
-})
-    .then(response => {
-        // Handle the response here
-        console.log(response.data);
-    })
-    .catch(error => {
-        // Handle the error here
-        console.error(error);
-    });
+});
+
+const token = response.data;
+console.log(token)
+
+export default token;
